@@ -1,9 +1,32 @@
-let shoppingListApp = Vue.createApp({
+
+let ClickCounter =  {
+    template: '<button @click="count++">{{count}}</button>',
     data() {
-        return  {
-            tag: "Hello World!"
+        return {
+            count:0
         }
     }
-});
+}
 
-shoppingListApp.mount("#app");
+
+let InputField = {
+    props: {
+        label: String,
+    },
+    template: `
+        <div>
+            <label>{{label}}</label>
+            <input type="text">
+        </div>
+    `,
+}
+
+
+let app = Vue.createApp({
+    components: {
+        'click-counter': ClickCounter,
+        'input-field': InputField,
+      },
+})
+
+.mount("#app");
